@@ -22,7 +22,12 @@ $(document).ready(function()
         let popup_id = $('#' + $(this).attr("rel")); // Связываем rel и popup_id
         $('.popup_edit').show(); // Открываем окно
         $('.overlay_popup_edit').show(); // Открываем блок заднего фона
+        button_id = +$(this).attr('id');
+        let currentValueName = playlists[button_id].get_playlistName();
+        let currentValueDesc = playlists[button_id].get_playlistDescription();
         closePlaylistMenu();
+        document.getElementById("playlistName2").value = currentValueName;
+        document.getElementById("playlistDescription2").value = currentValueDesc;
     });
     // Function that HIDES pop-up window
     $('.overlay_popup_edit').on("click", function() { // Обрабатываем клик по заднему фону
@@ -70,7 +75,11 @@ $(document).ready(function()
 
      // hides pop-up window and shows pl name
      $('.btn_save').on("click", function(){
-        
+        let name_playlist = document.getElementById("playlistName2").value;
+        let description_playlist = document.getElementById("playlistDescription2").value;
+        playlists[button_id].set_playlistName(name_playlist);
+        playlists[button_id].set_playlistDescription(description_playlist);
+        document.getElementById(`Playlist${button_id}`).innerText = name_playlist;
         openPlaylistMenu();
         $('.overlay_popup_edit, .popup_edit').hide();
     });
@@ -80,7 +89,7 @@ $(document).ready(function()
     //Counter of playlists
     let i = 0;
     let playlists = []; //Playlists array
-
+    let button_id = 0;
 
     /*Playlist CLASS*/
     class Playlist
@@ -159,10 +168,10 @@ function printPlaylist(nameOfPlaylist) {
     newElement.innerHTML = `
     <div class="row">
     <div class="col">
-    <a href = "#" class = "Playlist${i}"> ${nameOfPlaylist} </a>
+    <a href = "#" class = "Playlist${i}" id = "Playlist${i}"> ${nameOfPlaylist} </a>
     </div>
     <div class="col">
-    <a href="javascript:void(0)" id="Edit${i}" class="show_popup2" rel="popup2">&#9998;</a>
+    <a href="javascript:void(0)" id="${i}" class="show_popup2" rel="popup2">&#9998;</a>
     </div>
     </div>`;
     

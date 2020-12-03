@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 
-    
+
 </head>
 
 <body>
@@ -50,11 +50,14 @@
 
                         <!--Playlist button-->
                         <div id="myPlaylists" class="playlists">
+
+                            <div class="playlist_header">
+                                <h2>My playlists</h2>
+                            </div>
                             <!-- Cross bnt to close playlist menu -->
                             <a href="javascript:void(0)" class="closebtn">&times;</a>
                             <!-- First playlist -->
                             <a href="javascript:void(0)" class="show_popup1" rel="popup1">&#10010;</a>
-                            <a href="javascript:void(0)" class="show_popup2" rel="popup2">&#9998;</a>
                             <div class="playlistNames">
                                 <div id="listOfPlaylist"></div>
                             </div>
@@ -286,62 +289,83 @@
         <!-- POP-UP Window -->
         <div class="popup_edit" id="popup2">
 
-            <div class="object">
-        <table width="100%">
-            <tr>
-                <td>
-                <!-- Playlist form (name + description) -->
-                <form class="ui-form2" action="" method="">
+            <div class="row">
+                <div class="col">
+                    <!-- Playlist form (name + description) -->
+                    <form class="ui-form2" action="" method="">
 
-                    <!-- Header -->
-                    <div class="editPlaylistHeader">
-                        <h1 class="title3">Edit Playlist</h1>
+                        <!-- Header -->
+                        <div class="editPlaylistHeader">
+                            <a class="title3">Edit Playlist</a>
+                        </div>
+
+                        <!-- Playlist NAME -->
+                        <div class="form-row">
+                            <input type="text" id="playlistName2">
+                            <label for="Name">Name</label>
+                        </div>
+
+                        <!-- Playlist DESCRIPTION -->
+                        <div class="form-row">
+                            <input type="text" id="playlistDescription2">
+                            <label for="Description">Description</label>
+                        </div>
+
+                        <hr>
+                        <!-- Song name -->
+                        <div class="form-row">
+                            <input type="text" id="playlistSong">
+                            <label for="Song">Song</label>
+                        </div>
+
+                        <!-- Artist -->
+                        <div class="form-row">
+                            <input type="text" id="playlistArtist">
+                            <label for="Artist">Artist</label>
+                        </div>
+                        <!-- button "ADD SONG" -->
+                        <div class="btn_add">
+                            <input type="button" value="Add song" />
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="col">
+
+                    <!-- Header of songs -->
+                    <div class="songs_header">
+                        <a>Songs in playlist</a>
                     </div>
 
-                    <!-- Playlist NAME -->
-                    <div class="form-row">
-                        <input type="text" id="playlistName">
-                        <label for="Name">Name</label>
-                    </div>
+                    <!-- Songs in playlists -->
+                    <div class="songs_in_playlist">
 
-                    <!-- Playlist DESCRIPTION -->
-                    <div class="form-row">
-                        <input type="text" id="playlistDescription">
-                        <label for="Description">Description</label>
-                    </div>
+                        <div class="song">
+                            <div class="song_number">
+                                <h2>1</h2>
+                            </div>
+                            <div class="paragraphs">
+                                <div class="song_name">
+                                    <p>Never Too Late</p>
+                                </div>
+                                <div class="song_artist">
+                                    <p>Three Days Grace</p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- Song name -->
-                    <div class="form-row">
-                        <input type="text" id="playlistSong">
-                        <label for="Song">Song</label>
-                    </div>
-
-                    <!-- Artist -->
-                    <div class="form-row">
-                        <input type="text" id="playlistArtist">
-                        <label for="Artist">Artist</label>
                     </div>
 
                     <!-- button "SAVE" -->
+
                     <div class="btn_save">
                         <input type="button" value="Save" />
                     </div>
-                </form>
-                </td>
-                <td>
-                    <div class="dropdown">
-                      <li><button onclick="dropdownScript1()"class="dropbtn">List of songs</button></li>
-                      <div div id="myDropdown1" class="dropdown-content" >
-                        <a href="https://fanlink.to/Independence-by-1ON3-Jandarm-EddieN">Independence</a>
-                        <a href="https://fanlink.to/silent-movie-by-1ON3-Jandarm-EddieN">Silent Movie</a>
-                        <a href="https://fanlink.to/PlanetOfBaboons">Planet Of Baboons</a>
-                      </div>
-                    </div>
-                </td>
-            </tr>
-            </table>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -369,7 +393,7 @@
 
     <!-- Linking jquery lib and javascript file -->
     <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/mscript.js"></script>   
+    <script src="js/mscript.js"></script>
 
 </body>
 

@@ -146,6 +146,16 @@ body{
   transition: 0.3s;
 }
 
+.playlists h2 {
+  padding: 8px 8px 8px 8px;
+  font-size: 20px;
+  color: white;
+  display: block;
+  font-weight: bold;
+  transition: 0.3s;
+  text-align: center;
+}
+
 /* When you mouse over the navigation links, change their color */
 .playlists a:hover {
   color:  #8660c5;
@@ -195,6 +205,7 @@ body{
 }
 .playlists .show_popup2 {/*Style of pl menu links*/
   position: center;
+  padding: 0px 8px 8px 120px;
   color: white;
   top: 0;
   font-size: 30px;
@@ -458,6 +469,7 @@ body{
   .form-row {
     position: relative;
     margin-bottom: 40px;
+    margin-top: 20px;
   }
 
   /*INPUT pop-up design*/
@@ -521,6 +533,14 @@ body{
     font-size: 20px;
   }
 
+  hr {
+    border: none; /* Убираем границу */
+    background-color: #fff; /* Цвет линии */
+    color: #fff; /* Цвет линии для IE6-7 */
+    height: 2px; /* Толщина линии */
+    margin-bottom: 50px;
+  }
+
   /*"CREATE" button pop-up window*/
   .btn_create input {
     background-color: #8660c5;
@@ -544,7 +564,14 @@ body{
     outline: none;
   }
   /*"SAVE" button pop-up window*/
-  .btn_save input {
+ 
+  .btn_save {
+    position: absolute;
+    top: 445px;
+    left: 95px;
+  }  
+
+  .btn_save input, .btn_add input {
     background-color: #8660c5;
     border: none;
     color: #eaeaea;
@@ -558,12 +585,60 @@ body{
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
   }
-  .btn_save input:hover{
+  .btn_save input:hover, .btn_add input:hover{
     background-color: #212529;
     color: #fff;
   }
-  .btn_save input:active, .btn_save input:focus{
+  .btn_save input:active, .btn_save input:focus
+  .btn_add input:active, .btn_add input:focus
+  {
     outline: none;
+  }
+
+  .songs_header a {
+    padding: 8px 8px 8px 8px;
+    font-size: 20px;
+    color: white;
+    display: block;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: center;
+    margin-left: 80px;
+    margin-bottom: 30px;
+  }
+  .editPlaylistHeader a {
+    padding: 8px 8px 8px 8px;
+    font-size: 20px;
+    color: white;
+    display: block;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: center;
+  }
+
+  .song {
+    display: inline-flex;
+  }
+  .song_number h2 {
+    /* display: inline-block; */
+    text-align: left;
+    /* margin-left: 40px; */
+    margin-bottom: 0px;
+  }
+
+  .song_name p {
+    font-size: 20px;
+    color: #9d959d;
+    text-align: left;
+    margin-left: 40px;
+    margin-bottom: 0px;
+  }
+  .song_artist p {
+
+    font-size: 12px;
+    color: #9d959d;
+    text-align: left;
+    margin-left: 40px;
   }
 
 
