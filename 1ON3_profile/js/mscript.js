@@ -28,6 +28,13 @@ $(document).ready(function()
         closePlaylistMenu();
         document.getElementById("playlistName2").value = currentValueName;
         document.getElementById("playlistDescription2").value = currentValueDesc;
+        trackId = 1;
+        for(let a in playlists[button_id].arrSongs) {
+            let songName = playlists[button_id].arrSongs[a].get_nameSg();
+            let songArtist  = playlists[button_id].arrSongs[a].get_artist();
+            printTrack(songName,songArtist, trackId);
+            trackId++;
+        }
     });
     // Function that HIDES pop-up window
     $('.overlay_popup_edit').on("click", function() { // Обрабатываем клик по заднему фону
@@ -80,8 +87,20 @@ $(document).ready(function()
         playlists[button_id].set_playlistName(name_playlist);
         playlists[button_id].set_playlistDescription(description_playlist);
         document.getElementById(`Playlist${button_id}`).innerText = name_playlist;
+        document.getElementById("songs_in_playlist").innerText = "";
         openPlaylistMenu();
         $('.overlay_popup_edit, .popup_edit').hide();
+    });
+
+    $('.btn_add input').on("click", function(){
+        let currentSongName = document.getElementById("playlistSong").value;
+        let currentSongArtist = document.getElementById("playlistArtist").value;
+        let k = new Song(currentSongName,currentSongArtist);
+        playlists[button_id].set_arraySongs(k);
+        printTrack(currentSongName, currentSongArtist, trackId);
+        document.getElementById("playlistSong").value = "";
+        document.getElementById("playlistArtist").value = "";
+        trackId++;
     });
 
 
@@ -90,6 +109,7 @@ $(document).ready(function()
     let i = 0;
     let playlists = []; //Playlists array
     let button_id = 0;
+    let trackId = 1;
 
     /*Playlist CLASS*/
     class Playlist
@@ -128,7 +148,7 @@ $(document).ready(function()
 
     }
 
-    class Song extends Playlist
+    class Song
     {
         constructor(nameSong, artist)   //Constructor receives song name and artist
         {
@@ -153,12 +173,12 @@ $(document).ready(function()
         }
 
         //URL
-        get_url() { //Getter
-            return this.url;
-        }
-        set_url(x){ //Setter
-            this.url = x;
-        }
+        // get_url() { //Getter
+        //     return this.url;
+        // }
+        // set_url(x){ //Setter
+        //     this.url = x;
+        // }
 
     }
 
@@ -176,6 +196,25 @@ function printPlaylist(nameOfPlaylist) {
     </div>`;
     
     listOfPlaylist.prepend(newElement); 
+}
+
+//Shows new track of current Platlist in Edit menu
+function printTrack(trackName, trackArtist, songNumber) {
+    let newElement = document.createElement('div');
+    newElement.classList.add("song");
+    newElement.innerHTML = `
+    <div class="song_number" id = "${songNumber}">
+       <h2>${songNumber}</h2>
+    </div>
+   <div class="paragraphs">
+       <div class="song_name">
+           <p>${trackName}</p>
+       </div>
+       <div class="song_artist">
+           <p>${trackArtist}</p>
+       </div>
+   </div>`;
+   songs_in_playlist.append(newElement);
 }
     
 /* Set the width of the sidebar to 400px (show it) */
